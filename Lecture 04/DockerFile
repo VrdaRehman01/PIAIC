@@ -1,0 +1,7 @@
+```plaintext
+FROM python:3.9-slim                              # Start with a small Python image
+WORKDIR /app                                      # Set the working directory inside the container
+COPY . /app                                       # Copy your project files into the container
+RUN pip install jupyter                           # Install Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"] # Start Jupyter
+```
