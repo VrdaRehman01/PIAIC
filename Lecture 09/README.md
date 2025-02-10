@@ -161,7 +161,7 @@ LLMs like **ChatGPT** and **Gemini AI** are **not connected to live data**. They
 
 ---
 
-## 🎯 Wrap-Up  
+## Wrap-Up  
 
 This session helped us strengthen our **Python skills** by understanding **functions, modules, API keys, and cloud-based environments**. We explored how to make our code more **efficient and reusable** while learning about **AI-powered tools like Gemini AI**. With this knowledge, we are now better equipped to build **powerful, scalable, and intelligent applications** using Python.  
 
