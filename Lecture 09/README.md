@@ -1,4 +1,4 @@
-## # ✨ PIAIC Lecture 9: Sunday Session Recap by Warda Rehman
+## ✨ PIAIC Lecture 9: Sunday Session Recap by Warda Rehman
 Welcome to the second session of the **PIAIC Certified Cloud Native AI Program!** held on held on September 29, 2024. 
 In this session, we explored essential concepts in Python and cloud-based development, helping us build a strong foundation for AI programming. We started by setting up **Google Colab**, an online coding environment that makes Python coding easier and more accessible. Then, we learned how to **download external Python files**, import helper functions, and even generate an **API key** for Google’s **Gemini AI**.  
 
