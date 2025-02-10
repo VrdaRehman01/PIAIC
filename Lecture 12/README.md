@@ -19,6 +19,11 @@ OOP is a programming style that focuses on objects rather than just functions an
 ## **🔑 Four Pillars of OOP**
 ### **1️⃣ Encapsulation 🔒 (Data Protection)**
 Encapsulation means **hiding** data within a class and only allowing controlled access to it. This keeps our code secure and well-organized.  
+```mermaid
+graph TD;
+    A[Class] --> B[Methods];
+    A --> C[Variables];
+```
 
 #### **Example: Private and Public Attributes**
 ```python
@@ -42,18 +47,251 @@ print(car1.__model)      #  Not Allowed (AttributeError)
 ### **2️⃣ Inheritance 🧬 (Code Reusability)**
 Inheritance allows a new class (**child class**) to inherit methods and attributes from an existing class (**parent class**).  
 
-#### **Example: Simple Inheritance**
-```python
-class Vehicle:
-    def start_engine(self):
-        print("Engine started!")
+## **Simple Inheritance**
 
-class Car(Vehicle):  # Car class inherits from Vehicle
-    pass
-
-my_car = Car()
-my_car.start_engine()  # Inherits method from Vehicle
+```mermaid
+classDiagram
+    ParentClass <|-- ChildClass
 ```
+
+A **child class** inherits from a **single parent class**.
+
+## Code Example
+```python
+class Parent:
+    def show(self):
+        print("This is the Parent class.")
+
+class Child(Parent):
+    def display(self):
+        print("This is the Child class.")
+
+# Creating an object of the Child class
+obj = Child()
+obj.show()   # Inherited from Parent
+obj.display()  # Own method
+```
+
+## Explanation
+
+- `Parent` class has a method `show()`.
+- `Child` class **inherits** from `Parent`, so it gets access to `show()`.
+- The `Child` class has its own method `display()`.
+- The `obj` (object of `Child` class) can call both `show()` and `display()`.
+
+## Output
+
+```
+This is the Parent class.
+This is the Child class.
+```
+
+---
+## **Multiple Inheritance**
+```mermaid
+classDiagram
+    ParentClass_1 <|-- ChildClass
+    ParentClass_2 <|-- ChildClass
+```
+A **child class** inherits from **more than one parent class**.
+
+## Code Example
+
+```python
+class Father:
+    def father_info(self):
+        print("This is the Father class.")
+
+class Mother:
+    def mother_info(self):
+        print("This is the Mother class.")
+
+class Child(Father, Mother):
+    def child_info(self):
+        print("This is the Child class.")
+
+# Creating an object of the Child class
+obj = Child()
+obj.father_info()  # Inherited from Father
+obj.mother_info()  # Inherited from Mother
+obj.child_info()   # Own method
+```
+
+## Explanation
+
+- `Father` class has a method `father_info()`.
+- `Mother` class has a method `mother_info()`.
+- `Child` class **inherits from both** `Father` and `Mother`, gaining access to both methods.
+- The `Child` class also defines its own method, `child_info()`.
+- The `obj` (object of `Child` class) can call all three methods.
+
+## Output
+
+```
+This is the Father class.
+This is the Mother class.
+This is the Child class.
+```
+
+---
+
+## **Multi-Level Inheritance**
+
+```mermaid
+classDiagram
+    ParentClass <|-- ChildClass_1
+    ChildClass_1 <|-- ChildClass_2
+```
+
+A **child class** inherits from a **parent class**, and another child **inherits from that child**.
+
+## Code Example
+
+```python
+class Grandparent:
+    def grandparent_info(self):
+        print("This is the Grandparent class.")
+
+class Parent(Grandparent):
+    def parent_info(self):
+        print("This is the Parent class.")
+
+class Child(Parent):
+    def child_info(self):
+        print("This is the Child class.")
+
+# Creating an object of the Child class
+obj = Child()
+obj.grandparent_info()  # Inherited from Grandparent
+obj.parent_info()       # Inherited from Parent
+obj.child_info()        # Own method
+```
+
+## Explanation
+
+- `Grandparent` class has a method `grandparent_info()`.
+- `Parent` class **inherits** from `Grandparent` and adds `parent_info()`.
+- `Child` class **inherits** from `Parent` and adds `child_info()`.
+- The `Child` class now has access to methods from **both** `Parent` and `Grandparent`.
+
+## Output
+
+```
+This is the Grandparent class.
+This is the Parent class.
+This is the Child class.
+```
+
+---
+
+## **Hierarchical Inheritance**
+```mermaid
+classDiagram
+    ParentClass <|-- ChildClass_1
+    ParentClass <|-- ChildClass_2
+```
+
+In **hierarchical inheritance**, a single **parent class** has **multiple child classes**.
+
+## Code Example
+
+```python
+class Parent:
+    def parent_info(self):
+        print("This is the Parent class.")
+
+class Child1(Parent):
+    def child1_info(self):
+        print("This is the First Child class.")
+
+class Child2(Parent):
+    def child2_info(self):
+        print("This is the Second Child class.")
+
+# Creating objects of both child classes
+obj1 = Child1()
+obj2 = Child2()
+
+obj1.parent_info()  # Inherited from Parent
+obj1.child1_info()  # Own method
+
+obj2.parent_info()  # Inherited from Parent
+obj2.child2_info()  # Own method
+```
+
+## Explanation
+
+- **`Parent` class** contains `parent_info()` method.
+- **`Child1` and `Child2`** both inherit from `Parent`, gaining access to `parent_info()`.
+- **Each child class** has its own unique method (`child1_info()` and `child2_info()`).
+- **Objects of `Child1` and `Child2`** can access the parent’s method along with their own.
+
+## Output
+
+```
+This is the Parent class.
+This is the First Child class.
+This is the Parent class.
+This is the Second Child class.
+```
+
+---
+## **Hybrid Inheritance**
+```mermaid
+classDiagram
+    ParentClass <|-- ChildClass_1
+    ParentClass <|-- ChildClass_2
+    ChildClass_1 <|-- ChildClass_3
+    ChildClass_2 <|-- ChildClass_3
+```
+**Hybrid Inheritance** is a combination of two or more types of inheritance in Python.
+
+## Code Example
+
+```python
+class A:
+    def method_A(self):
+        print("This is class A.")
+
+class B(A):  # Single Inheritance
+    def method_B(self):
+        print("This is class B.")
+
+class C(A):  # Hierarchical Inheritance
+    def method_C(self):
+        print("This is class C.")
+
+class D(B, C):  # Multiple Inheritance
+    def method_D(self):
+        print("This is class D.")
+
+# Creating an object of class D
+obj = D()
+obj.method_A()  # Inherited from A
+obj.method_B()  # Inherited from B
+obj.method_C()  # Inherited from C
+obj.method_D()  # Own method
+```
+
+## Explanation
+
+- **Class `A`** is the base class.
+- **Class `B`** inherits from `A` (**Single Inheritance**).
+- **Class `C`** also inherits from `A` (**Hierarchical Inheritance**).
+- **Class `D`** inherits from both `B` and `C` (**Multiple Inheritance**), making this a **Hybrid Inheritance** structure.
+- The **object of class `D`** can access methods from all parent classes due to **method resolution order (MRO)**.
+
+## Output
+
+```
+This is class A.
+This is class B.
+This is class C.
+This is class D.
+```
+
+---
+
 👉 **Why use inheritance?** To avoid rewriting code and create a logical hierarchy between classes.
 
 ---
